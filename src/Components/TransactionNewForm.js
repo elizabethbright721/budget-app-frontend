@@ -13,10 +13,15 @@ function TransactionNewForm() {
   });
   const { index } = useParams()
   const navigate = useNavigate()
+  
 
   const handleTextChange = (event) => {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   };
+
+  const handleCheckBox = () => {
+    setTransaction({...transaction,  isDebit: !transaction.isDebit})
+  }
 
  const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +39,7 @@ function TransactionNewForm() {
       <label htmlFor="date">Date:</label>
         <input
           id="date"
-          type="text"
+          type="date"
           name="date"
           value={transaction.date}
           onChange={handleTextChange}
@@ -49,11 +54,17 @@ function TransactionNewForm() {
         <label htmlFor="amount">Amount</label>
         <input
           id="amount"
-          type="text"
+          type="number"
           value={transaction.amount}
           onChange={handleTextChange}
         />
-        
+        <label htmlFor="isDebit">Withdrawal</label>
+        <input
+          id="isDebit"
+          type="checkbox"
+          value={transaction.isDebit}
+          onChange={handleCheckBox}
+        />
         <label htmlFor="from">From:</label>
         <textarea
           id="from"

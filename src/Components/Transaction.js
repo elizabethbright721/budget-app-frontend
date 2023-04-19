@@ -5,7 +5,7 @@ const API = process.env.REACT_APP_API_URL;
 
 
 
-function Transaction({ transaction, index }) {
+function Transaction({ transaction, index, dateString }) {
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     axios
@@ -16,13 +16,13 @@ function Transaction({ transaction, index }) {
   return (
     <tr>
       <td>
-        {transaction.date}
+        {dateString}
       </td>
       <td>
         <Link to={`/transactions/${index}`}>{transaction.item_name}</Link>
       </td>
       <td>
-        ${transaction.amount}
+        {transaction.amount}
       </td>
     </tr>
   );

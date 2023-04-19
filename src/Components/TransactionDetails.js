@@ -8,7 +8,6 @@ function TransactionDetails() {
   let { index } = useParams();
   let navigate = useNavigate()
     
-    console.log(transaction)
   
     useEffect(() => {
     axios
@@ -20,7 +19,7 @@ function TransactionDetails() {
         navigate("/not-found");
       });
   }, [index, navigate]);
-
+  
   const handleDelete = () => {
     axios
     .delete(`${API}/transactions/${index}`)
@@ -29,11 +28,15 @@ function TransactionDetails() {
     })
     .catch((e) => console.log(e));
   };
+
+  
   return (
     <article>
-      <h3>{transaction.item_name}</h3>
-      <p>${transaction.amount}</p>
-      <p>{transaction.date}</p>
+      <h5>Date: {transaction.date}</h5>
+       <h5>Item: {transaction.item_name}</h5>
+       <h5>Amount: ${transaction.amount}</h5> 
+       
+     
       <div className="showNavigation">
         <div>
           {" "}

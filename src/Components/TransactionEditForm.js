@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useParams, Link , useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 const API = process.env.REACT_APP_API_URL;
+
 
 function TransactionEditForm() {
   let { index } = useParams();
@@ -19,7 +20,9 @@ function TransactionEditForm() {
     setTransaction({ ...transaction, [event.target.id]: event.target.value });
   };
 
-
+    const handleCheckBox = () => {
+    setTransaction({...transaction,  isDebit: !transaction.isDebit})
+  }
   useEffect(() => {
     axios
     .get(`${API}/transactions/${index}`)
@@ -46,7 +49,7 @@ function TransactionEditForm() {
       <label htmlFor="date">Date:</label>
         <input
           id="date"
-          type="text"
+          type="date"
           name="date"
           value={transaction.date}
           onChange={handleTextChange}
@@ -61,11 +64,10 @@ function TransactionEditForm() {
         <label htmlFor="amount">Amount:</label>
         <input
           id="amount"
-          type="text"
+          type="number"
           value={transaction.amount}
           onChange={handleTextChange}
         />
-        
         <label htmlFor="from">From:</label>
         <textarea
           id="from"

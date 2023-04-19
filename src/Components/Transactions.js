@@ -11,16 +11,32 @@ function Transactions() {
     });
   }, []);
 
+
+    const sumBankTotal = transactions.map((transaction) => Number(transaction.amount)).reduce((a, b) => a + b, 0)
+    
   return (
-    <div className="Bookmarks">
+    <div className="">
       <section>
-        <h1>Bank Account Total $0</h1>
+        <h3>Bank Account Total $
+            {sumBankTotal > 100 
+            ? <span className="green">{sumBankTotal}</span>
+            : sumBankTotal > 0 
+            ? <span className="yellow">{sumBankTotal}</span> 
+            : <span className="red">{sumBankTotal}</span>
+        }</h3>
         <table>
           <thead>        
           </thead>
           <tbody>
             {transactions.map((transaction, index) => {
-              return <Transaction key={index} transaction={transaction} index={index} />;
+                const date = transaction.date.split('-');
+                date[1] -= 1;
+                const dateString = new Intl.DateTimeFormat('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric',
+                }).format(Date.UTC(...date)).replace(/,/g, ',')
+              return <Transaction key={index} transaction={transaction} index={index} dateString={dateString} />;
             })}
           </tbody>
         </table>

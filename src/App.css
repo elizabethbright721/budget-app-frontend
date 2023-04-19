@@ -1,1 +1,102 @@
+.App {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
+}
+
+nav {
+  background: #27bc2cfe;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  box-shadow: 2px 2px 4px rgb(25, 209, 71);
+  margin-bottom: 1em;
+  margin-left: 1em;
+  background-image: url("../public/favicon.png");
+}
+
+main {
+  width: 90%;
+  margin: auto;
+
+  
+}
+.nav-title > a {
+  color: #fafafa;
+}
+
+a {
+  text-decoration: none;
+  color: #27bc2cfe;
+}
+h3 {
+  text-align: center;
+}
+h4 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+table {
+  width: 50%;
+  margin: auto;
+}
+
+td {
+  text-align: center;
+}
+
+tbody td:not(td:first-of-type):hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+tbody tr:nth-child(even) {
+  /* background: #f4eafd; */
+}
+
+.New {
+  /* border: 1px solid gold;
+  margin: auto;
+  width: 95%; */
+}
+
+.New form {
+  width: 30%;
+}
+
+input[type],
+textarea {
+  display: block;
+  width: 100%;
+  margin: auto;
+}
+
+
+.button {
+  width: 80%;
+  
+}
+.new-transaction {
+  color: white;
+  
+}
+
+.showNavigation {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.green {
+  color: #27bc2cfe;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.red {
+  color: red;
+}
